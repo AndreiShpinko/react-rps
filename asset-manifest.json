@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/react-rps/static/css/main.cb48a9fc.css",
+    "main.js": "/react-rps/static/js/main.75f5e498.js",
+    "static/media/lizard.svg": "/react-rps/static/media/lizard.4c214c3460b4a32114f7.svg",
+    "static/media/scissor.svg": "/react-rps/static/media/scissor.e42991dd555032d52f35.svg",
+    "static/media/rock.svg": "/react-rps/static/media/rock.b31283a166dd250ebcf5.svg",
+    "static/media/paper.svg": "/react-rps/static/media/paper.38f454e0cbcfda5f8720.svg",
+    "index.html": "/react-rps/index.html",
+    "static/media/spock.svg": "/react-rps/static/media/spock.700c56dd217f83d0a131.svg",
+    "main.cb48a9fc.css.map": "/react-rps/static/css/main.cb48a9fc.css.map",
+    "main.75f5e498.js.map": "/react-rps/static/js/main.75f5e498.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb48a9fc.css",
+    "static/js/main.75f5e498.js"
+  ]
+}
