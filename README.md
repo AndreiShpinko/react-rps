@@ -6,4 +6,4 @@ Responsive React RPS Game.
 
 ## Preview
 
-![Screen](https://github.com/AndreiShpinko/masonry-gallery/blob/gh-pages/readmeScreens/screen1.jpg)
+![Screen](https://github.com/AndreiShpinko/react-rps/blob/gh-pages/readmeScreens/screen1.jpg)
