@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { color_btn } from "../Constants";
+import { color_first } from "../../core/constants/constants";
 
 const Buttons = ({ signs, clickBtn }) => {
   return (
@@ -10,7 +10,7 @@ const Buttons = ({ signs, clickBtn }) => {
         return (
           <Button key={i} onClick={() => clickBtn(sign)}>
             <ImageWrap>
-              <Image src={require(`../../public/imgs/${sign}.svg`)} />
+              <Image src={require(`../../../public/imgs/${sign}.png`)} />
             </ImageWrap>
           </Button>
         );
@@ -18,13 +18,6 @@ const Buttons = ({ signs, clickBtn }) => {
     </ButtonsWrap>
   );
 };
-
-const ButtonsWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-`;
 
 const Button = styled.button`
   display: inline-flex;
@@ -43,12 +36,19 @@ const Button = styled.button`
 
   margin: 5px;
   padding: 10px;
-  box-shadow: 0px 2px 6px -4px #818181;
-  background-color: ${color_btn};
+  box-shadow: 0px 5px 5px -4px ${color_first};
+  background-color: ${color_first};
 
   @media screen and (max-width: 767px) {
     margin: 2px;
   }
+`;
+
+const ButtonsWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 `;
 
 const ImageWrap = styled.div`

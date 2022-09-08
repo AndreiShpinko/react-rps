@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const ResultTitle = ({ result }) => {
   return (
-    <Wrap>
+    <Wrapper>
       <Title>{result}</Title>
-    </Wrap>
+    </Wrapper>
   );
 };
 
@@ -15,7 +15,7 @@ const Title = styled.h2`
   font-family: "Albert Sans", sans-serif;
 `;
 
-const Wrap = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

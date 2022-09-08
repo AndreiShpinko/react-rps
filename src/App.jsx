@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import Statistics from "./components/Statistics";
-import Buttons from "./components/Buttons";
-import Hand from "./components/Hand";
-import ResultTitle from "./components/ResultTitle";
-import History from "./components/History";
+import Statistics from "./components/simple/Statistics";
+import Buttons from "./components/simple/Buttons";
+import Hand from "./components/ordinary/Hand";
+import ResultTitle from "./components/simple/ResultTitle";
+import History from "./components/simple/History";
 
 import Fade from "react-reveal/Fade";
 
-import { color_background } from "./Constants";
+import { color_background } from "./core/constants/constants";
+
+function getResult(userSign, cpuSign) {
+  // 1-wins; 2-ties; 3-losses;
+  if (userSign === cpuSign) {
+    return 2;
+  } else if (
+    (userSign === "rock" && (cpuSign === "lizard" || cpuSign === "scissor")) ||
+    (userSign === "scissor" && (cpuSign === "lizard" || cpuSign === "paper")) ||
+    (userSign === "paper" && (cpuSign === "rock" || cpuSign === "spock")) ||
+    (userSign === "lizard" && (cpuSign === "paper" || cpuSign === "spock")) ||
+    (userSign === "paper" && (cpuSign === "rock" || cpuSign === "spock"))
+  ) {
+    return 1;
+  } else return 3;
+}
 
 function App() {
   const signs = ["rock", "scissor", "paper", "lizard", "spock"];
@@ -26,37 +41,17 @@ function App() {
 
   const [resultTitle, setResultTitle] = useState("Start game!!!");
   const [history, setHistory] = useState([]);
-
   const [playAnimation, setPlayAnimation] = useState(true);
 
   const clickBtn = (sign) => {
     setPlayAnimation(false);
 
+    const randomSign = signs[Math.floor(Math.random() * signs.length)];
     setUserSign(sign);
-    setCpuSign(signs[Math.floor(Math.random() * signs.length)]);
-  };
+    setCpuSign(randomSign);
 
-  function getResult(userSign, cpuSign) {
-    // 1-wins; 2-ties; 3-losses;
-    if (userSign === cpuSign) {
-      return 2;
-    } else if (
-      (userSign === "rock" &&
-        (cpuSign === "lizard" || cpuSign === "scissor")) ||
-      (userSign === "scissor" &&
-        (cpuSign === "lizard" || cpuSign === "paper")) ||
-      (userSign === "paper" && (cpuSign === "rock" || cpuSign === "spock")) ||
-      (userSign === "lizard" && (cpuSign === "paper" || cpuSign === "spock")) ||
-      (userSign === "paper" && (cpuSign === "rock" || cpuSign === "spock"))
-    ) {
-      return 1;
-    } else return 3;
-  }
+    const result = getResult(sign, randomSign);
 
-  useEffect(() => {
-    if (!(signs.includes(userSign) && signs.includes(cpuSign))) return;
-
-    let result = getResult(userSign, cpuSign);
     if (result === 1) {
       setStatistics((prev) => ({
         ...prev,
@@ -84,16 +79,16 @@ function App() {
       return [
         {
           result,
-          userSign,
-          cpuSign,
+          userSign: sign,
+          cpuSign: randomSign,
         },
         ...prev,
       ];
     });
-  }, [userSign, cpuSign]);
+  };
 
   return (
-    <Wrap>
+    <Wrapper>
       <Сontainer>
         <Fade top>
           <Header>
@@ -116,14 +111,15 @@ function App() {
           <Buttons signs={signs} clickBtn={clickBtn} />
         </Fade>
       </Сontainer>
-    </Wrap>
+    </Wrapper>
   );
 }
 
-const Wrap = styled.div`
+const Wrapper = styled.div`
   min-height: 100%;
   min-width: 100%;
   background-color: ${color_background};
+  overflow: hidden;
 `;
 
 const Сontainer = styled.div`

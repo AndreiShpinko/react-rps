@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { color_hand, color_hand_border } from "../Constants";
+import { color_hand, color_hand_border } from "../../core/constants/constants";
 
 const Hand = ({ sign, signs, reverse = false, playAnimation }) => {
   if (!sign) sign = signs[Math.floor(Math.random() * signs.length)];
